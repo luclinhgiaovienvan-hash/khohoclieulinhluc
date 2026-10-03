@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kho học liệu số - Trường Mầm non Cao Lâu</title>
+<style>
+:root{
+  --primary:#2f855a;--primary2:#38a169;--accent:#f6ad55;--bg:#f7fafc;
+  --card:#fff;--text:#234;--muted:#6b7280;--border:#e2e8f0;--danger:#e53e3e;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,var(--primary),#48bb78);color:white;padding:24px 20px}
+.wrap{max-width:1180px;margin:auto}
+.brand{display:flex;gap:16px;align-items:center}
+.logo{width:66px;height:66px;border-radius:18px;background:#fff;color:var(--primary);display:grid;place-items:center;font-size:32px;box-shadow:0 8px 30px #0002}
+h1{font-size:clamp(24px,4vw,38px);margin:0}
+.subtitle{margin:6px 0 0;opacity:.95}
+nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.nav{display:flex;gap:8px;padding:10px 20px;overflow:auto}
+.nav button{border:0;background:transparent;padding:10px 14px;border-radius:10px;white-space:nowrap;cursor:pointer;font-weight:700}
+.nav button.active,.nav button:hover{background:#e6fffa;color:var(--primary)}
+main{padding:24px 20px 50px}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;margin-bottom:22px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 8px 24px #00000008}
+.hero h2{font-size:30px;margin:0 0 10px}
+.search{display:flex;gap:10px;margin-top:18px}
+.search input, select, textarea, input[type=text], input[type=url]{width:100%;padding:12px 14px;border:1px solid #cbd5e1;border-radius:12px;font:inherit}
+.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.soft{background:#e6fffa;color:var(--primary)}
+.btn.orange{background:#fff3e0;color:#9a5200}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#f0fff4;border-radius:14px;padding:14px;text-align:center}
+.stat b{font-size:25px;display:block;color:var(--primary)}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.tag{display:inline-block;background:#edf2f7;border-radius:999px;padding:5px 9px;font-size:12px;margin-right:5px}
+.card h3{margin:2px 0;font-size:19px}
+.meta{color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.hidden{display:none!important}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:6px 0 14px}
+.section-title h2{margin:0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-weight:700;font-size:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.full{grid-column:1/-1}
+.notice{background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:14px;margin-bottom:18px}
+.comment{padding:10px 0;border-top:1px dashed var(--border)}
+.badge{background:#fff;color:var(--primary);border:1px solid #b7ead2;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:700}
+.empty{text-align:center;padding:30px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.filters{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.grid,.form-grid,.filters{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.hero h2{font-size:24px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap brand">
+    <div class="logo">🎓</div>
+    <div>
+      <h1>KHO HỌC LIỆU SỐ</h1>
+      <div class="subtitle">Trường Mầm non Cao Lâu – xã Ba Sơn</div>
+      <div class="subtitle"><b>Chia sẻ – Kết nối – Sáng tạo – Cùng phát triển</b></div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap nav">
+    <button class="active" data-page="home">🏠 Trang chủ</button>
+    <button data-page="library">📚 Kho học liệu</button>
+    <button data-page="upload">⬆️ Đăng học liệu</button>
+    <button data-page="community">💬 Góc chia sẻ</button>
+    <button data-page="favorites">❤️ Đã lưu</button>
+    <button data-page="admin">🛡️ Quản trị</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<section id="home" class="page">
+  <div class="hero">
+    <div class="panel">
+      <span class="badge">Dành cho toàn thể giáo viên</span>
+      <h2>Cùng xây dựng kho học liệu của nhà trường</h2>
+      <p>Giáo viên có thể đăng tải, tìm kiếm, lưu, đánh giá và trao đổi về học liệu. Mỗi tài liệu hay là một kinh nghiệm được lan tỏa.</p>
+      <div class="search">
+        <input id="homeSearch" placeholder="🔎 Tìm: tách gộp, làm quen chữ cái, vận động..." />
+        <button class="btn primary" onclick="goSearch()">Tìm kiếm</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>📊 Hoạt động kho học liệu</h3>
+      <div class="stats">
+        <div class="stat"><b id="countDocs">0</b><span>Học liệu</span></div>
+        <div class="stat"><b id="countLikes">0</b><span>Lượt lưu</span></div>
+        <div class="stat"><b id="countComments">0</b><span>Trao đổi</span></div>
+      </div>
+      <p class="meta" style="margin-top:14px">Dữ liệu trong bản mẫu được lưu trên chính trình duyệt của thiết bị.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><h2>🌟 Học liệu nổi bật</h2><button class="btn soft" onclick="showPage('library')">Xem tất cả</button></div>
+  <div id="featured" class="grid"></div>
+</section>
+
+<section id="library" class="page hidden">
+  <div class="section-title"><h2>📚 Kho học liệu</h2></div>
+  <div class="filters">
+    <input id="q" placeholder="Tìm theo tên/chủ đề..." oninput="renderLibrary()">
+    <select id="age" onchange="renderLibrary()">
+      <option value="">Tất cả độ tuổi</option><option>3–4 tuổi</option><option>4–5 tuổi</option><option>5–6 tuổi</option>
+    </select>
+    <select id="area" onchange="renderLibrary()">
+      <option value="">Tất cả lĩnh vực</option>
+      <option>Phát triển nhận thức</option><option>Phát triển ngôn ngữ</option><option>Phát triển thể chất</option>
+      <option>Phát triển tình cảm – kỹ năng xã hội</option><option>Phát triển thẩm mỹ</option>
+    </select>
+    <select id="type" onchange="renderLibrary()">
+      <option value="">Tất cả loại học liệu</option><option>Giáo án</option><option>PowerPoint</option><option>Phiếu học tập</option><option>Trò chơi</option><option>Video</option><option>Học liệu tương tác</option>
+    </select>
+  </div>
+  <div id="libraryGrid" class="grid"></div>
+</section>
+
+<section id="upload" class="page hidden">
+  <div class="section-title"><h2>⬆️ Chia sẻ học liệu</h2></div>
+  <div class="notice"><b>Lưu ý:</b> Đây là bản website mẫu miễn phí. Thông tin học liệu sẽ được lưu trên trình duyệt. Khi triển khai dùng chung toàn trường, có thể kết nối Supabase/Firebase miễn phí để giáo viên ở nhiều máy cùng thấy dữ liệu.</div>
+  <div class="panel">
+    <form id="uploadForm" class="form-grid">
+      <div class="field full"><label>Tên học liệu *</label><input id="title" required placeholder="Ví dụ: Tách – gộp trong phạm vi 5"></div>
+      <div class="field"><label>Độ tuổi *</label><select id="fAge" required><option>3–4 tuổi</option><option selected>4–5 tuổi</option><option>5–6 tuổi</option></select></div>
+      <div class="field"><label>Lĩnh vực *</label><select id="fArea" required><option>Phát triển nhận thức</option><option>Phát triển ngôn ngữ</option><option>Phát triển thể chất</option><option>Phát triển tình cảm – kỹ năng xã hội</option><option>Phát triển thẩm mỹ</option></select></div>
+      <div class="field"><label>Loại học liệu</label><select id="fType"><option>Giáo án</option><option>PowerPoint</option><option>Phiếu học tập</option><option>Trò chơi</option><option>Video</option><option>Học liệu tương tác</option></select></div>
+      <div class="field"><label>Người chia sẻ *</label><input id="author" required placeholder="Họ tên giáo viên"></div>
+      <div class="field full"><label>Chủ đề</label><input id="topic" placeholder="Ví dụ: Quê hương – Đất nước"></div>
+      <div class="field full"><label>Mô tả / mục tiêu</label><textarea id="desc" rows="4" placeholder="Mô tả ngắn cách sử dụng, mục tiêu của học liệu..."></textarea></div>
+      <div class="field full"><label>Liên kết tài liệu (Google Drive, Canva, YouTube...)</label><input id="link" type="url" placeholder="https://..."></div>
+      <div class="full"><button class="btn primary" type="submit">Đăng học liệu</button></div>
+    </form>
+  </div>
+</section>
+
+<section id="community" class="page hidden">
+  <div class="section-title"><h2>💬 Góc chia sẻ chuyên môn</h2></div>
+  <div class="panel">
+    <div class="field"><label>Viết chia sẻ / câu hỏi</label><textarea id="postText" rows="3" placeholder="Ví dụ: Các cô có cách nào tổ chức hoạt động tách – gộp sinh động hơn không?"></textarea></div>
+    <div class="field" style="margin-top:10px"><label>Tên giáo viên</label><input id="postAuthor" placeholder="Họ tên"></div>
+    <button class="btn primary" style="margin-top:10px" onclick="addPost()">Đăng chia sẻ</button>
+  </div>
+  <div id="posts" style="margin-top:16px"></div>
+</section>
+
+<section id="favorites" class="page hidden">
+  <div class="section-title"><h2>❤️ Học liệu đã lưu</h2></div>
+  <div id="favoritesGrid" class="grid"></div>
+</section>
+
+<section id="admin" class="page hidden">
+  <div class="section-title"><h2>🛡️ Khu quản trị</h2></div>
+  <div class="notice">Bản mẫu mô phỏng chức năng quản trị. Khi triển khai chính thức cần đăng nhập và phân quyền Ban giám hiệu / Tổ trưởng / Giáo viên.</div>
+  <div class="panel">
+    <h3>Danh sách học liệu</h3>
+    <div id="adminList"></div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Trường Mầm non Cao Lâu – xã Ba Sơn • Kho học liệu số nội bộ</footer>
+
+<script>
+const seedDocs = [
+ {id:1,title:"Tách – gộp trong phạm vi 5",age:"4–5 tuổi",area:"Phát triển nhận thức",type:"Học liệu tương tác",topic:"Quê hương – Đất nước",author:"Tổ Mẫu giáo nhỡ",desc:"Hoạt động kéo thả giúp trẻ tách và gộp nhóm có 5 đối tượng.",link:"",likes:3},
+ {id:2,title:"Làm quen chữ cái a, ă, â",age:"5–6 tuổi",area:"Phát triển ngôn ngữ",type:"PowerPoint",topic:"Trường mầm non",author:"Cô Mai",desc:"Bài giảng trực quan kèm trò chơi củng cố.",link:"",likes:2},
+ {id:3,title:"Bé vui vận động – Bật qua vòng",age:"3–4 tuổi",area:"Phát triển thể chất",type:"Giáo án",topic:"Bản thân",author:"Cô Hoa",desc:"Giáo án vận động cơ bản, dễ tổ chức trong lớp.",link:"",likes:1},
+];
+let docs = JSON.parse(localStorage.getItem("caoLauDocs")||"null") || seedDocs;
+let favorites = JSON.parse(localStorage.getItem("caoLauFav")||"[]");
+let posts = JSON.parse(localStorage.getItem("caoLauPosts")||"[]");
+
+function save(){localStorage.setItem("caoLauDocs",JSON.stringify(docs));localStorage.setItem("caoLauFav",JSON.stringify(favorites));localStorage.setItem("caoLauPosts",JSON.stringify(posts))}
+function showPage(id){
+ document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));
+ document.getElementById(id).classList.remove("hidden");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ if(id==="library")renderLibrary(); if(id==="favorites")renderFavorites(); if(id==="community")renderPosts(); if(id==="admin")renderAdmin();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+
+function card(d){
+ const isFav=favorites.includes(d.id);
+ return `<article class="card">
+   <div><span class="tag">${d.age}</span><span class="tag">${d.type}</span></div>
+   <h3>${escapeHtml(d.title)}</h3>
+   <div class="meta">${escapeHtml(d.area)} • ${escapeHtml(d.topic||"Chưa phân chủ đề")}</div>
+   <p>${escapeHtml(d.desc||"")}</p>
+   <div class="meta">👩‍🏫 Chia sẻ: <b>${escapeHtml(d.author)}</b> • ❤️ ${d.likes||0}</div>
+   <div class="actions">
+     ${d.link?`<a class="btn soft" href="${d.link}" target="_blank" rel="noopener">Mở tài liệu</a>`:""}
+     <button class="btn orange" onclick="toggleFav(${d.id})">${isFav?"💔 Bỏ lưu":"❤️ Lưu"}</button>
+     <button class="btn soft" onclick="quickComment(${d.id})">💬 Góp ý</button>
+   </div>
+ </article>`;
+}
+function renderHome(){
+ document.getElementById("countDocs").textContent=docs.length;
+ document.getElementById("countLikes").textContent=favorites.length;
+ document.getElementById("countComments").textContent=posts.length;
+ document.getElementById("featured").innerHTML=docs.slice(0,3).map(card).join("");
+}
+function renderLibrary(){
+ const q=(document.getElementById("q").value||"").toLowerCase();
+ const age=document.getElementById("age").value, area=document.getElementById("area").value, type=document.getElementById("type").value;
+ const list=docs.filter(d=>(!q||(d.title+" "+d.topic+" "+d.desc+" "+d.author).toLowerCase().includes(q))&&(!age||d.age===age)&&(!area||d.area===area)&&(!type||d.type===type));
+ document.getElementById("libraryGrid").innerHTML=list.length?list.map(card).join(""):`<div class="empty">Không tìm thấy học liệu phù hợp.</div>`;
+}
+function renderFavorites(){
+ const list=docs.filter(d=>favorites.includes(d.id));
+ document.getElementById("favoritesGrid").innerHTML=list.length?list.map(card).join(""):`<div class="empty">Bạn chưa lưu học liệu nào.</div>`;
+}
+function toggleFav(id){
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ save(); renderHome(); renderLibrary(); renderFavorites();
+}
+function quickComment(id){
+ const d=docs.find(x=>x.id===id);
+ const txt=prompt(`Góp ý cho học liệu "${d.title}":`);
+ if(txt&&txt.trim()){posts.unshift({id:Date.now(),author:"Giáo viên",text:`Góp ý về "${d.title}": ${txt.trim()}`,time:new Date().toLocaleString("vi-VN")});save();alert("Đã ghi nhận góp ý.");}
+}
+document.getElementById("uploadForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const d={id:Date.now(),title:title.value.trim(),age:fAge.value,area:fArea.value,type:fType.value,topic:topic.value.trim(),author:author.value.trim(),desc:desc.value.trim(),link:link.value.trim(),likes:0};
+ docs.unshift(d);save();e.target.reset();renderHome();alert("Đã đăng học liệu vào kho mẫu.");showPage("library");
+});
+function addPost(){
+ const t=postText.value.trim(), a=postAuthor.value.trim()||"Giáo viên";
+ if(!t)return alert("Bạn hãy nhập nội dung chia sẻ.");
+ posts.unshift({id:Date.now(),author:a,text:t,time:new Date().toLocaleString("vi-VN")});
+ postText.value="";save();renderPosts();renderHome();
+}
+function renderPosts(){
+ document.getElementById("posts").innerHTML=posts.length?posts.map(p=>`<div class="panel" style="margin-bottom:12px"><b>👩‍🏫 ${escapeHtml(p.author)}</b><div class="meta">${p.time}</div><p>${escapeHtml(p.text)}</p></div>`).join(""):`<div class="empty">Chưa có chia sẻ nào. Hãy là người đầu tiên bắt đầu!</div>`;
+}
+function renderAdmin(){
+ document.getElementById("adminList").innerHTML=docs.map(d=>`<div class="comment"><b>${escapeHtml(d.title)}</b> — ${escapeHtml(d.author)} <button class="btn soft" style="float:right" onclick="deleteDoc(${d.id})">Xóa</button><div class="meta">${d.age} • ${d.area} • ${d.type}</div></div>`).join("");
+}
+function deleteDoc(id){
+ if(confirm("Xóa học liệu này khỏi bản mẫu?")){docs=docs.filter(d=>d.id!==id);favorites=favorites.filter(x=>x!==id);save();renderAdmin();renderHome();}
+}
+function goSearch(){document.getElementById("q").value=homeSearch.value;showPage("library");}
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+renderHome();renderPosts();
+</script>
+</body>
+</html>
